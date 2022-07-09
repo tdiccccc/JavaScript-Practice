@@ -32,7 +32,7 @@ window.addEventListener('DOMContentLoaded', e => {
   });
 
   elFile.addEventListener('change', e => {
-    uiReadImage(e.target.files[0];)
+    uiReadImage(e.target.files[0]);
   });
 
   //---------------------
@@ -44,14 +44,14 @@ window.addEventListener('DOMContentLoaded', e => {
     try {
       const dtURL = await readImage(file);
       await drawImage(dtURL, canvas, context);
-    } catch(e) {
+    } catch (e) {
       return;
     }
 
     //表示の変更
     elNoView.style.display = 'none';
     canvas.style.display = 'inline';
-    
+
     //読み込み時間の設定
     canvas.setAttribute('time', Date.now());
 
@@ -60,5 +60,42 @@ window.addEventListener('DOMContentLoaded', e => {
   }
 
   //画像ファイルの読み込み
-  
+  function readImage(file) {
+    return new Promise((resolve, reject) => {
+      //ファイルの有効性の確認
+      const re = /¥.(png|jpg|jpeg|gif)$/i;
+      if (!file.name.match(re)) {
+        reject();
+        return;
+      }
+
+      //ファイルの読み込み
+      const reader = new FileReader();
+      reader.onload = () => {
+        resolve(reader.result);
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  //画像の描画
+  function drawImage(url, canvas, context) {
+    return new Promise((resolve, reject) => {
+      //画像の読み込み
+      const img = new Image();
+      img.src = url;
+      img.onload = () => {
+        //横幅、高さの変数を作成
+        const wC = canvas.width;
+        const hC = canvas.height;
+        const wI = img.width;
+        const hI = img.height;
+
+        //読み込んだ画像の貼り付け
+        context.drawImage(img, 0, 0, wI, hI,
+          0, 0, wC, hC);
+        resolve();
+      };
+    });
+  }
 });
