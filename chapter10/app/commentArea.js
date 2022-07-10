@@ -14,7 +14,7 @@ window.addEventListener('DOMContentLoaded', e => {
   });
 
   //IME入力終了時の処理
-  elCmnt.addEventListener('compositionstart', e => {
+  elCmnt.addEventListener('compositionend', e => {
     //IME入力終了
     isComposition = false;
 
