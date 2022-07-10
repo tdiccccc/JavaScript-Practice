@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="style.css">
@@ -13,7 +14,7 @@
         <div>画像ファイルをドロップするかタップしてください</div>
       </div>
       <canvas id="view" width="800" height="420"></canvas>
-      <input type="file" accept=".jpg.jpeg.png.gif" id="file">
+      <input type="file" accept=".jpg,.jpeg,.png,.gif" id="file">
     </div>
 
     <div id="controlArea" class="uiArea">
@@ -25,9 +26,7 @@
     <div id="commentArea" class="uiArea">
       <div>コメント<span id="commentStatus"></span></div>
       <div>
-        <textarea 
-         id="commentStatus" data-default="投稿です！" deta-lenmax="100"
-        >
+        <textarea id="comment" data-default="投稿です！" data-lenmax="100">
         </textarea>
       </div>
     </div>
@@ -37,15 +36,16 @@
     <div id="postListArea">
     </div>
   </div>
-  
+
   <script src="common.js"></script>
   <script src="storage.js"></script>
   <script src="imageArea.js"></script>
   <script src="controlArea.js"></script>
   <script src="commentArea.js"></script>
   <script src="sendArea.js"></script>
-  <script src="dataFormat.js"></script>
+  <script src="dateFormat.js"></script>
   <script src="postListArea.js"></script>
-  
+
 </body>
+
 </html>

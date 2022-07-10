@@ -7,7 +7,7 @@ window.addEventListener('DOMContentLoaded', e => {
 
   //Canvas関係の要素
   const canvas = document.querySelector('#view');
-  const context = document.querySelector('2d');
+  const context = canvas.getContext('2d');
 
   //---------------------
   //画像エリアにドロップしたときの処理
@@ -63,7 +63,7 @@ window.addEventListener('DOMContentLoaded', e => {
   function readImage(file) {
     return new Promise((resolve, reject) => {
       //ファイルの有効性の確認
-      const re = /¥.(png|jpg|jpeg|gif)$/i;
+      const re = /\.(png|jpg|jpeg|gif)$/i;
       if (!file.name.match(re)) {
         reject();
         return;

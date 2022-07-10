@@ -40,7 +40,7 @@ window.addEventListener('DOMContentLoaded', e => {
     //入力時の取得
     const txt = elCmnt.value;
     const len = [...txt].length;
-    const lenMax = parseInt(elCmnt.dataset.lenMax);
+    const lenMax = parseInt(elCmnt.dataset.lenmax);
     console.log(txt, len);
 
     //入力情報の表示
